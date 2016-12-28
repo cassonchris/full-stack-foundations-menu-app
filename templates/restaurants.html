@@ -1,19 +1,33 @@
 <html>
-	<body>
-	
-		<div>
-			<p><a href="{{url_for('newRestaurant')}}">New Restaurant</a></p>
-		</div>
-	
-		{% for r in restaurants %}
+    <head>
+        <title>Restaurants</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap-theme.min.css')}}" />
+        <script src="{{url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{url_for('newRestaurant')}}">New Restaurant</a>
+                </div>
+            </div>
 
-		<div>
-			<p><a href="{{url_for('showMenu', restaurant_id=r.id)}}">{{r.name}}</a></p>
-			<p><a href="{{url_for('editRestaurant', restaurant_id=r.id)}}">Edit</a></p>
-			<p><a href="{{url_for('deleteRestaurant', restaurant_id=r.id)}}">Delete</a></p>
-		</div>
+            {% for r in restaurants %}
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{url_for('showMenu', restaurant_id=r.id)}}">{{r.name}}</a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{{url_for('editRestaurant', restaurant_id=r.id)}}">Edit</a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{{url_for('deleteRestaurant', restaurant_id=r.id)}}">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
 
-		{% endfor %}
-	</body>
+        </div>
+    </body>
 </html>
 
