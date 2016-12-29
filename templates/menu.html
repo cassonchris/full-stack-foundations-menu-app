@@ -45,10 +45,14 @@
                     {{i.course}}
                 </div>
                 <div class="col-md-1">
-                    <a href="{{url_for('editMenuItem', restaurant_id=i.restaurant_id, menu_id=i.id)}}">Edit</a>
+                    <a href="{{url_for('editMenuItem', restaurant_id=i.restaurant_id, menu_id=i.id)}}" title="Edit">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
                 </div>
                 <div class="col-md-1">
-                    <a href="{{url_for('deleteMenuItem', restaurant_id=i.restaurant_id, menu_id=i.id)}}">Delete</a>
+                    <a href="{{url_for('deleteMenuItem', restaurant_id=i.restaurant_id, menu_id=i.id)}}" title="Delete">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
                 </div>
             </div>
             {% endfor %}
