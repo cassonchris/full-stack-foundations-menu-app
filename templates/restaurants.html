@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Restaurants</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap-theme.min.css')}}" />
+        <script src="{{url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <!--MESSAGE FLASHING -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert {{category}}">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <!--END MESSAGE FLASHING-->
+            
+            <div class="row row-margin-top">
+                <div class="col-md-12 text-center">
+                    <h1>Restaurants</h1>
+                </div>
+            </div>
+
+            {% for r in restaurants %}
+            <div class="row row-margin-top">
+                <div class="col-md-10">
+                    <a href="{{url_for('showMenu', restaurant_id=r.id)}}">{{r.name}}</a>
+                </div>
+                <div class="col-md-1">
+                    <a href="{{url_for('editRestaurant', restaurant_id=r.id)}}">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="col-md-1">
+                    <a href="{{url_for('deleteRestaurant', restaurant_id=r.id)}}">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="row row-margin-top">
+                <div class="col-md-12">
+                    <a class="btn btn-default btn-block" href="{{url_for('newRestaurant')}}">New Restaurant</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
