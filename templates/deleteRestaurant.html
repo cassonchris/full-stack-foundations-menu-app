@@ -7,6 +7,18 @@
     </head>
     <body>
         <div class="container">
+            <!--MESSAGE FLASHING -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert {{category}}">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <!--END MESSAGE FLASHING-->
+            
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h1>Are you sure you want to delete {{restaurant.name}}?</h1>
