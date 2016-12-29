@@ -28,35 +28,27 @@
             
             <form action="{{url_for('editMenuItem', restaurant_id=item.restaurant_id, menu_id=item.id)}}" method="POST">
                 <div class="row row-margin-top">
-                    <div class="col-md-4">
-                        Name
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" name="name" placeholder="{{item.name}}" />
+                    <div class="col-md-12">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" name="name" placeholder="{{item.name}}" />
                     </div>
                 </div>
                 <div class="row row-margin-top">
-                    <div class="col-md-4">
-                        Description
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" name="description" placeholder="{{item.description}}" />
+                    <div class="col-md-12">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" class="form-control" name="description" placeholder="{{item.description}}" />
                     </div>
                 </div>
                 <div class="row row-margin-top">
-                    <div class="col-md-4">
-                        Price
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" name="price" placeholder="{{item.price}}" />
+                    <div class="col-md-12">
+                        <label for="price">Price</label>
+                        <input type="text" id="price" class="form-control" name="price" placeholder="{{item.price}}" />
                     </div>
                 </div>
                 <div class="row row-margin-top">
-                    <div class="col-md-4">
-                        Course
-                    </div>
-                    <div class="col-md-8">
-                        <select class="form-control" name="course">
+                    <div class="col-md-12">
+                        <label for="course">Course</label>
+                        <select id="course" class="form-control" name="course">
                             <option value="Appetizer" {% if item.course=="Appetizer" %} selected="selected" {% endif %}>Appetizer</option>
                             <option value="Entree" {% if item.course=="Entree" %} selected="selected" {% endif %}>Entree</option>
                             <option value="Dessert" {% if item.course=="Dessert" %} selected="selected" {% endif %}>Dessert</option>
