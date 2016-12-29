@@ -19,12 +19,6 @@
             {% endwith %}
             <!--END MESSAGE FLASHING-->
 
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="{{url_for('newRestaurant')}}">New Restaurant</a>
-                </div>
-            </div>
-
             {% for r in restaurants %}
             <div class="row">
                 <div class="col-md-10">
@@ -43,6 +37,11 @@
             </div>
             {% endfor %}
 
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-md-12">
+                    <a class="btn btn-default btn-block" href="{{url_for('newRestaurant')}}">New Restaurant</a>
+                </div>
+            </div>
         </div>
     </body>
 </html>
