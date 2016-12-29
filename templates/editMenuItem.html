@@ -31,7 +31,7 @@
                         Name
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="name" placeholder="{{item.name}}" />
+                        <input type="text" class="form-control" name="name" placeholder="{{item.name}}" />
                     </div>
                 </div>
                 <div class="row">
@@ -39,7 +39,7 @@
                         Description
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="description" placeholder="{{item.description}}" />
+                        <input type="text" class="form-control" name="description" placeholder="{{item.description}}" />
                     </div>
                 </div>
                 <div class="row">
@@ -47,7 +47,7 @@
                         Price
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="price" placeholder="{{item.price}}" />
+                        <input type="text" class="form-control" name="price" placeholder="{{item.price}}" />
                     </div>
                 </div>
                 <div class="row">
@@ -55,7 +55,7 @@
                         Course
                     </div>
                     <div class="col-md-8">
-                        <select name="course">
+                        <select class="form-control" name="course">
                             <option value="Appetizer" {% if item.course=="Appetizer" %} selected="selected" {% endif %}>Appetizer</option>
                             <option value="Entree" {% if item.course=="Entree" %} selected="selected" {% endif %}>Entree</option>
                             <option value="Dessert" {% if item.course=="Dessert" %} selected="selected" {% endif %}>Dessert</option>
