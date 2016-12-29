@@ -21,7 +21,12 @@
             <!--END MESSAGE FLASHING-->
             
             <div class="row row-margin-top">
-                <div class="col-md-12 text-center">
+                <div class="col-md-1">
+                    <a href="{{url_for('showRestaurants')}}" title="Restaurants">
+                        <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="col-md-11 text-center">
                     <h1>{{restaurant.name}}</h1>
                 </div>
             </div>
