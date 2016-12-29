@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>New Menu Item</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap-theme.min.css')}}" />
         <script src="{{url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
@@ -19,14 +20,14 @@
             {% endwith %}
             <!--END MESSAGE FLASHING-->
             
-            <div class="row">
+            <div class="row row-margin-top">
                 <div class="col-md-12 text-center">
                     <h1>New Menu Item</h1>
                 </div>
             </div>
             
             <form action="{{url_for('newMenuItem', restaurant_id=restaurant.id)}}" method="POST">
-                <div class="row">
+                <div class="row row-margin-top">
                     <div class="col-md-4">
                         Name
                     </div>
@@ -34,7 +35,7 @@
                         <input type="text" class="form-control" name="name" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row row-margin-top">
                     <div class="col-md-4">
                         Description
                     </div>
@@ -42,7 +43,7 @@
                         <input type="text" class="form-control" name="description" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row row-margin-top">
                     <div class="col-md-4">
                         Price
                     </div>
@@ -50,7 +51,7 @@
                         <input type="text" class="form-control" name="price" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row row-margin-top">
                     <div class="col-md-4">
                         Course
                     </div>
@@ -62,7 +63,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row row-margin-top">
                     <div class="col-md-6 text-center">
                         <input type="submit" class="btn btn-default btn-block" value="Add Menu Item" />
                     </div>

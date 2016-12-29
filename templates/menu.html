@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Menu</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap-theme.min.css')}}" />
         <script src="{{url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
@@ -19,14 +20,14 @@
             {% endwith %}
             <!--END MESSAGE FLASHING-->
             
-            <div class="row">
+            <div class="row row-margin-top">
                 <div class="col-md-12 text-center">
                     <h1>{{restaurant.name}}</h1>
                 </div>
             </div>
 
             {% for i in items %}
-            <div class="row">
+            <div class="row row-margin-top">
                 <div class="col-md-2">
                     {{i.name}}
                 </div>
@@ -52,7 +53,7 @@
             </div>
             {% endfor %}
 
-            <div class="row" style="margin-top: 15px;">
+            <div class="row row-margin-top">
                 <div class="col-md-12">
                     <a class="btn btn-default btn-block" href="{{url_for('newMenuItem', restaurant_id=restaurant.id)}}">New Menu Item</a>
                 </div>
