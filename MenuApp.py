@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session as login_session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
+import random, string
 
 app = Flask(__name__)
 
@@ -12,6 +13,13 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 ## begin routing
+
+@app.route('/login')
+def showLogin():
+    state = ''.join(random.choice(string.ascii_uppercase + string.digits)
+                    for x in xrange(32))
+    login_session['state'] = state
+    return render_template('login.html')
 
 @app.route('/', methods=['GET'])
 @app.route('/restaurant', methods=['GET'])
