@@ -102,6 +102,11 @@ def gconnect():
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
 
+    userID = getUserID(login_session['email'])
+    if not userID:
+        userID = createUser(login_session)
+    login_session['user_id'] = userID
+
     output = ''
     output += '<h1>Welcome, '
     output += login_session['username']
@@ -135,6 +140,7 @@ def gdisconnect():
     	del login_session['username']
     	del login_session['email']
     	del login_session['picture']
+    	del login_session['user_id']
     	response = make_response(json.dumps('Successfully disconnected.'), 200)
     	response.headers['Content-Type'] = 'application/json'
     	return response
@@ -161,7 +167,7 @@ def newRestaurant():
     if 'username' not in login_session:
         return redirect('/login')
     if request.method == 'POST':
-        newRestaurant = Restaurant(name=request.form['name'])
+        newRestaurant = Restaurant(name=request.form['name'], user_id=login_session['user_id'])
         session.add(newRestaurant)
         session.commit()
         flash('New Restaurant Created', 'alert-success')
@@ -219,7 +225,8 @@ def newMenuItem(restaurant_id):
             description=request.form['description'],
             price=request.form['price'],
             course=request.form['course'],
-            restaurant_id=restaurant_id
+            restaurant_id=restaurant_id,
+            user_id=login_session['user_id']
             )
         session.add(newMenuItem)
         session.commit()
