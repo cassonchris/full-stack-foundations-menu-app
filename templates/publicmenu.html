@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Menu</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap-theme.min.css')}}" />
+        <script src="{{url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <!--MESSAGE FLASHING -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert {{category}}">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <!--END MESSAGE FLASHING-->
+            
+            <div class="row row-margin-top">
+                <div class="col-md-1">
+                    <a href="{{url_for('showRestaurants')}}" title="Restaurants">
+                        <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="col-md-11 text-center">
+                    <h1>{{restaurant.name}}</h1>
+                </div>
+            </div>
+
+            {% for i in items %}
+            <div class="row row-margin-top">
+                <div class="col-md-2">
+                    {{i.name}}
+                </div>
+                <div class="col-md-6">
+                    {{i.description}}
+                </div>
+                <div class="col-md-2">
+                    {{i.price}}
+                </div>
+                <div class="col-md-2">
+                    {{i.course}}
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </body>
+</html>
+
