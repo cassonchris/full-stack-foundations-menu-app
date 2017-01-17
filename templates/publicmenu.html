@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Edit Restaurant</title>
+        <title>Menu</title>
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap-theme.min.css')}}" />
@@ -37,26 +37,33 @@
             
             <div class="row row-margin-top">
                 <div class="col-md-12 text-center">
-                    <h1>Edit Restaurant</h1>
+                    <h1>{{restaurant.name}}
+						<figure class="creator">
+							<img src="{{creator.picture}}"/>
+							<figcaption>{{creator.name}}</figcaption>
+						</figure>
+					</h1>
                 </div>
             </div>
-            
-            <form action="{{url_for('editRestaurant', restaurant_id=restaurant.id)}}" method="POST">
-                <div class="row row-margin-top">
-                    <div class="col-md-12">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" name="name" placeholder="{{restaurant.name}}" />
-                    </div>
+
+            {% for i in items %}
+            <div class="row row-margin-top">
+                <div class="col-md-2">
+                    {{i.name}}
                 </div>
-                <div class="row row-margin-top">
-                    <div class="col-md-6 text-center">
-                        <input type="submit" class="btn btn-default btn-block" value="Edit" />
-                    </div>
-                    <div class="col-md-6 text-center">
-                        <a class="btn btn-default btn-block" href="{{url_for('showRestaurants')}}">Cancel</a>
-                    </div>
+                <div class="col-md-6">
+                    {{i.description}}
                 </div>
-            </form>
+                <div class="col-md-2">
+                    {{i.price}}
+                </div>
+                <div class="col-md-2">
+                    {{i.course}}
+                </div>
+            </div>
+            {% endfor %}
+
         </div>
     </body>
 </html>
+
