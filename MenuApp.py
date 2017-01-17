@@ -109,6 +109,8 @@ def gconnect():
         userID = createUser(login_session)
     login_session['user_id'] = userID
 
+    updateUserPicture(userID, login_session['picture'])
+
     output = ''
     output += '<h1>Welcome, '
     output += login_session['username']
@@ -192,6 +194,8 @@ def fbconnect():
     if not user_id:
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
+
+    updateUserPicture(user_id, login_session['picture'])
 
     output = ''
     output += '<h1>Welcome, '
@@ -303,9 +307,9 @@ def showMenu(restaurant_id):
     items = session.query(MenuItem).filter_by(restaurant_id=restaurant_id)
     creator = getUserInfo(restaurant.user_id)
     if 'username' not in login_session or creator.id != login_session['user_id']:
-        return render_template('publicmenu.html', restaurant=restaurant, items=items)
+        return render_template('publicmenu.html', restaurant=restaurant, items=items, creator=creator)
     else:
-        return render_template('menu.html', restaurant=restaurant, items=items)
+        return render_template('menu.html', restaurant=restaurant, items=items, creator=creator)
 
 @app.route('/restaurant/<int:restaurant_id>/menu/json')
 @app.route('/restaurant/<int:restaurant_id>/menu/JSON')
@@ -392,6 +396,12 @@ def createUser(login_session):
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()
     return user.id
+
+def updateUserPicture(user_id, picture):
+    user = session.query(User).filter_by(id=user_id).one()
+    user.picture = picture
+    session.add(user)
+    session.commit()
 
 def getUserInfo(user_id):
     user = session.query(User).filter_by(id=user_id).one()
